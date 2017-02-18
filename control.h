@@ -11,6 +11,6 @@ public:
 	int EN_get_times();   
 	bool get_key_and_exit();
 	string judge_result();
-	void choose_lanuage();
+	bool choose_lanuage();
 };
 #endif

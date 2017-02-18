@@ -22,7 +22,15 @@ int main(void)
 	cout<<"|     Enter E or e quit the program     |"<<endl; 
 	cout<<"|---------------------------------------/"<<endl; 
 	srand((unsigned)time(NULL));
-    Control().choose_lanuage();
+    bool is_ch=Control().choose_lanuage();
+    if(is_ch)
+    {
+    	Printf().Ch_printf();
+	}
+	else
+	{
+		Printf().En_printf();
+	}
 	system("pause");
 	return 0;
 }

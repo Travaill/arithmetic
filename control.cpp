@@ -92,17 +92,19 @@ string Control::judge_result(void)          //判断结果是否为整数
 	}
 }
 	
-void Control::choose_lanuage(void)          //选择英文或者中文 
+bool Control::choose_lanuage(void)          //选择英文或者中文 
 {
 	string x;
+	bool is_ch=1;
 	cin>>x;
 	if(x=="CH"||x=="ch"||x=="Ch")
 	{
-		Printf().Ch_printf();
+		return is_ch;
 	}
 	if(x=="EN"||x=="en"||x=="En")
 	{
-		Printf().En_printf();
+		is_ch=0;
+		return is_ch;
 	}
 	else
 	{
