@@ -35,7 +35,7 @@ void Printf::Ch_printf(void)   //中文输出
 	}
 	else break;	
 	}
-	cout << "结果：正确" << right << "道题，错误" << wrong << "道题。";
+	cout << "结果：正确" << right << "道题，错误" << wrong << "道题。"<<endl;
 }
 
 void Printf::En_printf(void)  //英文输出 

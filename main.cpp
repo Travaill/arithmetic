@@ -15,7 +15,7 @@ int main(void)
 {
 	cout<<"---------四则计算器（Calculator）-------/"<<endl;
 	cout<<"|      本程序可以选中文和英文           |"<<endl;
-	cout<<"|   You can choose Chiness or Engilish  |"<<endl;
+	cout<<"|   You can choose Chinese or Engilish  |"<<endl;
 	cout<<"|	    输入 CH 选择中文            |"<<endl;
 	cout<<"|	Enter EN choose Engilish        |"<<endl;
 	cout<<"|输入E 或 e 提前结束程序并统计答题情况  |"<<endl; 
