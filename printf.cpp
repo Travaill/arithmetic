@@ -6,11 +6,11 @@
 #include <string>
 using namespace std;
 
-void Printf::Ch_printf(void)   //中文输出 
+void Printf::Ch_printf(int counts)   //中文输出 
 {
+	
 	int wrong=0;
 	int right=0;
-	int counts=Control().CH_get_times();
 	for (int i = 0; i < counts; i++)
 	{
 		string pol =Control().judge_result();
@@ -19,7 +19,6 @@ void Printf::Ch_printf(void)   //中文输出
 		cout << "第" << i + 1 << "道题的答案为:";
 		double number;
 		cin >> number;
-
 		if((Control()).get_key_and_exit())
 	{
 		if(number==res) 
@@ -38,11 +37,10 @@ void Printf::Ch_printf(void)   //中文输出
 	cout << "结果：正确" << right << "道题，错误" << wrong << "道题。"<<endl;
 }
 
-void Printf::En_printf(void)  //英文输出 
+void Printf::En_printf(int counts)  //英文输出 
 {
 	int wrong=0;
 	int right=0;
-	int counts=Control().EN_get_times();
 	for (int i = 0; i < counts; i++)
 	{
 		string pol =Control().judge_result();

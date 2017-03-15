@@ -1,5 +1,5 @@
 [Project]
-FileName=ÏîÄ¿1.dev
+FileName=arithmetic.dev
 Name=arithmetic
 Type=1
 Ver=2
@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=5
 CompilerSettings=0000000100000000001000000
-UnitCount=9
+UnitCount=7
 
 [VersionInfo]
 Major=1
@@ -114,26 +114,6 @@ BuildCmd=
 FileName=control.cpp
 CompileCpp=1
 Folder=control
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit8]
-FileName=printf.h
-CompileCpp=1
-Folder=object
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit9]
-FileName=printf.cpp
-CompileCpp=1
-Folder=object
 Compile=1
 Link=1
 Priority=1000

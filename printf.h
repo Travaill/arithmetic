@@ -5,7 +5,7 @@ using namespace std;
 class Printf
 {
 public:
-	void Ch_printf();
-	void En_printf();
+	void Ch_printf(int counts);
+	void En_printf(int counts);
 };
 #endif

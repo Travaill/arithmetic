@@ -7,10 +7,10 @@ class Control
  {
 public:
 	string judge_formula();
-	int CH_get_times();
-	int EN_get_times();   
+    void ShowLanguageList();
 	bool get_key_and_exit();
 	string judge_result();
-	bool choose_lanuage();
+    bool JudgeIfGet(char *lanuage);
+	void GetResource(char *filepath); 
 };
 #endif

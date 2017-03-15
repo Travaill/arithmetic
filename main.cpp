@@ -5,32 +5,33 @@
 #include <time.h>
 #include <iostream>
 #include <stdlib.h>
-#include <time.h> 
 #include <string>
 #include <sstream>
-#include <string.h>
+#include<fstream>
 using namespace std;
-
 int main(void)
 {
-	cout<<"---------四则计算器（Calculator）-------/"<<endl;
-	cout<<"|      本程序可以选中文和英文           |"<<endl;
-	cout<<"|   You can choose Chinese or Engilish  |"<<endl;
-	cout<<"|	    输入 CH 选择中文            |"<<endl;
-	cout<<"|	Enter EN choose Engilish        |"<<endl;
-	cout<<"|输入E 或 e 提前结束程序并统计答题情况  |"<<endl; 
-	cout<<"|     Enter E or e quit the program     |"<<endl; 
-	cout<<"|---------------------------------------/"<<endl; 
+    cout<<"请输入你所需要的语言的名称:"<<endl;
+    cout<<"Please enter a name for the language you need:"<<endl;
+    cout<<"Bitte geben sie ihren namen: die erforderlichen Sprachen"<<endl;
+    cout<<"Prie dans la langue dont vous avez besoin:"<<endl;
+	cout<<"入力してください。あなたに必要な言叶の名称:" <<endl; 
 	srand((unsigned)time(NULL));
-    bool is_ch=Control().choose_lanuage();
-    if(is_ch)
-    {
-    	Printf().Ch_printf();
-	}
-	else
+	Control().ShowLanguageList();
+	char language[20];
+	gets(language);
+	if(Control().JudgeIfGet(language))
 	{
-		Printf().En_printf();
-	}
+        fstream file;
+	    stringstream ss;
+	    char filepath[200] = "";
+	    ss<<"Languagerc\\"<<language<<".txt";
+	    ss>>filepath;
+	    ss.str("");
+        Control().GetResource(filepath);
+        
+	} 
+
 	system("pause");
 	return 0;
 }

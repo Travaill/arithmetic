@@ -6,8 +6,9 @@
 #include <stdlib.h>
 #include <string>
 #include <string.h>
+#include<fstream>
+#include<sstream>
 using namespace std;
-
 string Control::judge_formula(void)               //生成的算式是否合法 
 {
 	string str=Generate().generate_formula();
@@ -26,6 +27,8 @@ string Control::judge_formula(void)               //生成的算式是否合法
 	const char *substr11="/(10-10)";
 	const char *substr12="0*";
 	const char *substr13="0/";
+	const char *substr14="+0";
+	const char *substr15="-0";
     char *s1 = strstr(ptr, substr1);
     char *s2 = strstr(ptr, substr2);
     char *s3 = strstr(ptr, substr3);
@@ -39,7 +42,9 @@ string Control::judge_formula(void)               //生成的算式是否合法
     char *s11 = strstr(ptr, substr11);
     char *s12 = strstr(ptr, substr12);
     char *s13 = strstr(ptr, substr13);
-     if(s1==NULL&&s2==NULL&&s3==NULL&&s4==NULL&&s5==NULL&&s6==NULL&&s7==NULL&&s8==NULL&&s9==NULL&&s10==NULL&&s11==NULL&&s12==NULL&&s13==NULL)
+    char *s14 = strstr(ptr, substr13);
+    char *s15 = strstr(ptr, substr13);
+     if(s1==NULL&&s2==NULL&&s3==NULL&&s4==NULL&&s5==NULL&&s6==NULL&&s7==NULL&&s8==NULL&&s9==NULL&&s10==NULL&&s11==NULL&&s12==NULL&&s13==NULL&&s14==NULL&&s15==NULL)
      {
      	return str;
 	 }
@@ -47,24 +52,8 @@ string Control::judge_formula(void)               //生成的算式是否合法
 	 {
 	 	return judge_formula();
 	 }
-    
 }
 
-int Control::CH_get_times(void)                     //输入需要的题目数量 
-{
-	int times;
-	cout << "请输入想完成的题目数量:";
-	cin >> times;
-	return times;
-}
-
-int Control::EN_get_times(void)                     //输入需要的题目数量 
-{
-	int times;
-	cout << "How many questions do you want?";
-	cin >> times;
-	return times;
-}
 
 bool Control::get_key_and_exit(void)            //输出E 或 e退出循环统计答对和答错题数 
 {
@@ -92,23 +81,77 @@ string Control::judge_result(void)          //判断结果是否为整数
 	}
 }
 	
-bool Control::choose_lanuage(void)          //选择英文或者中文 
+
+void Control::ShowLanguageList()    //展示可供选择的语言 
 {
-	string x;
-	bool is_ch=1;
-	cin>>x;
-	if(x=="CH"||x=="ch"||x=="Ch")
+	fstream file;//文件流
+	file.open("languagerc//LanguageList.txt",ios::in);
+	char language[20];
+	while (file.getline(language,20))
 	{
-		return is_ch;
+		cout << language<<endl;
 	}
-	if(x=="EN"||x=="en"||x=="En")
+	file.close();
+}
+
+bool Control::JudgeIfGet(char *language)          //选择语言 
+{
+    fstream file;
+	stringstream ss;
+	char Langpath[200] = "";
+	ss<<"Languagerc\\"<<language<<".txt";
+	ss>>Langpath;
+	ss.str("");
+	file.open(Langpath, ios::in);
+	if (file.is_open())
 	{
-		is_ch=0;
-		return is_ch;
+		file.close();
+		return true;
 	}
-	else
+}
+
+void Control::GetResource(char *filepath)    //得到资源文件 
+{
+	string Resource[30];
+	fstream File;
+	stringstream ss; 
+	File.open(filepath,ios::in);
+	int i,j;
+	string Line;
+	for (i=0;i<8;i++)
 	{
-		return Control::choose_lanuage();
+	   getline(File,Line);
+	   swap(Line,Resource[i]);
 	}
-	 
+	File.close();
+	int wrong=0;
+	int right=0;
+	cout<<Resource[0];
+	int counts;
+	cin>>counts;
+	for (int i=0;i<counts;i++)
+	{
+		string pol =Control().judge_result();
+		cout << pol << "="<<endl;
+        double res=Calculate().calculate_formula(pol);
+		cout << Resource[1]<<i+1<<Resource[2];
+		double number;
+		cin >> number;
+		if((Control()).get_key_and_exit())
+	{
+		if(number==res) 
+		{
+	      cout <<Resource[3]<<endl;
+	      right++;
+		}
+	    else 
+	    {
+	        cout << Resource[4]<<res<<endl;
+        	wrong++;
+		}
+	}
+	else break;	
+	}
+	cout <<Resource[5]<< right << Resource[6] << wrong <<Resource[7]<<endl;
+	
 }

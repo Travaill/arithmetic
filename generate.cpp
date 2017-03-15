@@ -5,6 +5,7 @@
 #include <string>
 #include <sstream>
 #include <string.h>
+
 using namespace std;
 int Generate::generate_rand(int low,int high)  //生成[low,high]随机数 
 {
