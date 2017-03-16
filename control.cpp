@@ -87,14 +87,16 @@ void Control::ShowLanguageList()    //展示可供选择的语言
 	fstream file;//文件流
 	file.open("languagerc//LanguageList.txt",ios::in);
 	char language[20];
+	int sum=1;
 	while (file.getline(language,20))
 	{
-		cout << language<<endl;
+		cout <<language<<" ";
+		sum++;
 	}
 	file.close();
 }
 
-bool Control::JudgeIfGet(char *language)          //选择语言 
+bool Control::JudgeIfGet(char *language)          //判断语言路径是否正确 
 {
     fstream file;
 	stringstream ss;
@@ -102,7 +104,7 @@ bool Control::JudgeIfGet(char *language)          //选择语言
 	ss<<"Languagerc\\"<<language<<".txt";
 	ss>>Langpath;
 	ss.str("");
-	file.open(Langpath, ios::in);
+	file.open(Langpath,ios::in);
 	if (file.is_open())
 	{
 		file.close();
@@ -110,9 +112,8 @@ bool Control::JudgeIfGet(char *language)          //选择语言
 	}
 }
 
-void Control::GetResource(char *filepath)    //得到资源文件 
+void Control::GetResource(string *Resource,char *filepath)    //得到资源文件 
 {
-	string Resource[30];
 	fstream File;
 	stringstream ss; 
 	File.open(filepath,ios::in);
@@ -124,34 +125,5 @@ void Control::GetResource(char *filepath)    //得到资源文件
 	   swap(Line,Resource[i]);
 	}
 	File.close();
-	int wrong=0;
-	int right=0;
-	cout<<Resource[0];
-	int counts;
-	cin>>counts;
-	for (int i=0;i<counts;i++)
-	{
-		string pol =Control().judge_result();
-		cout << pol << "="<<endl;
-        double res=Calculate().calculate_formula(pol);
-		cout << Resource[1]<<i+1<<Resource[2];
-		double number;
-		cin >> number;
-		if((Control()).get_key_and_exit())
-	{
-		if(number==res) 
-		{
-	      cout <<Resource[3]<<endl;
-	      right++;
-		}
-	    else 
-	    {
-	        cout << Resource[4]<<res<<endl;
-        	wrong++;
-		}
-	}
-	else break;	
-	}
-	cout <<Resource[5]<< right << Resource[6] << wrong <<Resource[7]<<endl;
-	
+
 }

@@ -11,6 +11,6 @@ public:
 	bool get_key_and_exit();
 	string judge_result();
     bool JudgeIfGet(char *lanuage);
-	void GetResource(char *filepath); 
+	void GetResource(string *Resource,char *filepath); 
 };
 #endif
