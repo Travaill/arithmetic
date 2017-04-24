@@ -5,11 +5,11 @@ using namespace std;
 class Generate
 {
 public:
-	string generate_formula();
+	string generateExpression();
 private:
-    int generate_rand(int low,int high);
-    string generate_operator();
-    string generate_polynomial();
+    int randomNumber(int low,int high);
+    string randomOperation(int rand);
+    string generatePolynomial(int rand1,int rand2,string ope,int mode);;
     
 };
 #endif

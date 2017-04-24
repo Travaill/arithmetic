@@ -9,9 +9,8 @@
 #include<fstream>
 #include<sstream>
 using namespace std;
-string Control::judge_formula(void)               //生成的算式是否合法 
+bool Control::judgeExpression(string str)          //生成的算式是否合法 
 {
-	string str=Generate().generate_formula();
 	char ptr[35];
     strcpy(ptr,str.c_str()); 
 	const char *substr1="/0";
@@ -46,16 +45,15 @@ string Control::judge_formula(void)               //生成的算式是否合法
     char *s15 = strstr(ptr, substr13);
      if(s1==NULL&&s2==NULL&&s3==NULL&&s4==NULL&&s5==NULL&&s6==NULL&&s7==NULL&&s8==NULL&&s9==NULL&&s10==NULL&&s11==NULL&&s12==NULL&&s13==NULL&&s14==NULL&&s15==NULL)
      {
-     	return str;
+     	return 1;
 	 }
 	 else
 	 {
-	 	return judge_formula();
+	 	return 0;
 	 }
 }
 
-
-bool Control::get_key_and_exit(void)            //输出E 或 e退出循环统计答对和答错题数 
+bool Control::getKeyAndExit(void)                 //输出E 或 e退出循环统计答对和答错题数 
 {
 	char c;
     bool a=1;
@@ -67,44 +65,27 @@ bool Control::get_key_and_exit(void)            //输出E 或 e退出循环统计答对和答
 	return a;
 }
 
-string Control::judge_result(void)          //判断结果是否为整数  
+bool Control::judgeResult(double res)             //判断结果是否为整数  
 {
-  	string str=Control().judge_formula();
-  	double res=Calculate().calculate_formula(str);
   	if((int)res==res)
   	{
-  		return str;
+  		return 1;
 	}
 	else
 	{
-		return Control().judge_result();
+		return 0;
 	}
 }
 	
-
-void Control::ShowLanguageList()    //展示可供选择的语言 
-{
-	fstream file;//文件流
-	file.open("languagerc//LanguageList.txt",ios::in);
-	char language[20];
-	int sum=1;
-	while (file.getline(language,20))
-	{
-		cout <<language<<" ";
-		sum++;
-	}
-	file.close();
-}
-
-bool Control::JudgeIfGet(char *language)          //判断语言路径是否正确 
+bool Control::JudgeIfGet(char *language)          //判断路径是否正确 
 {
     fstream file;
 	stringstream ss;
-	char Langpath[200] = "";
+	char filepath[200] = "";
 	ss<<"Languagerc\\"<<language<<".txt";
-	ss>>Langpath;
+	ss>>filepath;
 	ss.str("");
-	file.open(Langpath,ios::in);
+	file.open(filepath,ios::in);
 	if (file.is_open())
 	{
 		file.close();
@@ -112,18 +93,20 @@ bool Control::JudgeIfGet(char *language)          //判断语言路径是否正确
 	}
 }
 
-void Control::GetResource(string *Resource,char *filepath)    //得到资源文件 
+void Control::GetResource(string *Resource,char *language)    //读取资源文件 
 {
 	fstream File;
-	stringstream ss; 
+	stringstream ss;
+	char filepath[200] = "";
+	ss<<"Languagerc\\"<<language<<".txt";   //生成文件地址 
+	ss>>filepath;   
+	ss.str("");
 	File.open(filepath,ios::in);
-	int i,j;
 	string Line;
-	for (i=0;i<8;i++)
+	for (int i=0;getline(File,Line);i++)
 	{
-	   getline(File,Line);
 	   swap(Line,Resource[i]);
 	}
 	File.close();
-
 }
+

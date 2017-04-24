@@ -5,6 +5,7 @@ using namespace std;
 class Printf
 {
 public:
-	void _Printf(string *Resource);
+	void ShowLanguageList();
+	void printfNeedWhat();
 };
 #endif

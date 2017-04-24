@@ -7,7 +7,7 @@
 using namespace std;
 stack<double> num_stk;
 stack<char> ope_stk;
-void Calculate::calculate_polynomial()      //计算多项式结果 
+void Calculate::calculatePolynomial()      //计算多项式结果 
 {
 	char ope=ope_stk.top();
     double a,b,res;
@@ -30,18 +30,18 @@ void Calculate::calculate_polynomial()      //计算多项式结果
 int Calculate::Rank(char x)                //计算优先级 
 {
     if(x=='(')
-        return 0;
-    else if(x=='+')
         return 1;
-    else if(x=='-')
+    else if(x=='+')
         return 2;
-    else if(x=='*')
+    else if(x=='-')
         return 3;
-    else if(x=='/')
+    else if(x=='*')
         return 4;
+    else if(x=='/')
+        return 5;
 }
 
-double Calculate::calculate_formula(string str)     //计算算式 
+double Calculate::calculateResult(string str)     //计算算式 
 {
 	
 	int x=0;
@@ -69,12 +69,12 @@ double Calculate::calculate_formula(string str)     //计算算式
             else if(str[i]==')')
             {
                 while(ope_stk.top()!='(')
-                    calculate_polynomial();                
+                    calculatePolynomial();                
                     ope_stk.pop();
             }
             else if((Rank(str[i]))<=Rank(ope_stk.top()))
             {
-                calculate_polynomial();
+                calculatePolynomial();
                 ope_stk.push(str[i]);
             }
             else
@@ -84,7 +84,7 @@ double Calculate::calculate_formula(string str)     //计算算式
         }
     }
     while(!ope_stk.empty())
-    calculate_polynomial();
+    calculatePolynomial();
     double res=num_stk.top();
     return res;
 }
