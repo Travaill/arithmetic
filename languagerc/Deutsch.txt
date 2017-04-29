@@ -1,8 +1,0 @@
-Bitte geben sie die Zahl der mochte, um den titel:
-S.
-Die antwort IST:
-Richtig
-FvrFehler, die richtige antwort
-Ergebnisse: die richtige
-Problem,Fehler
-Problem.

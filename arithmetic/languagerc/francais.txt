@@ -1,0 +1,8 @@
+Francais
+Article
+Reponse a la question:
+Correct
+Erreur, la bonne reponse
+Resultat: correcte
+Probleme derreur
+Probleme.
