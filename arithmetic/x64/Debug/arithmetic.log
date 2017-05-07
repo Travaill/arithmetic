@@ -1,8 +1,0 @@
-﻿  printf.cpp
-  main.cpp
-c:\users\administrator\desktop\c++\arithmetic\main.cpp(41): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
-  control.cpp
-c:\users\administrator\desktop\c++\arithmetic\control.cpp(114): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
-  正在生成代码...
-  arithmetic.vcxproj -> C:\Users\Administrator\Documents\Visual Studio 2017\Projects\arithmetic\x64\Debug\arithmetic.exe
-  arithmetic.vcxproj -> C:\Users\Administrator\Documents\Visual Studio 2017\Projects\arithmetic\x64\Debug\arithmetic.pdb (Partial PDB)

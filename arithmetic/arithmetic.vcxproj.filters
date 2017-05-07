@@ -15,51 +15,34 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Desktop\C++\arithmetic\calculate.h">
+    <ClInclude Include="calculate.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Desktop\C++\arithmetic\control.h">
+    <ClInclude Include="control.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Desktop\C++\arithmetic\generate.h">
+    <ClInclude Include="generate.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Desktop\C++\arithmetic\printf.h">
+    <ClInclude Include="printf.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\Desktop\C++\arithmetic\calculate.cpp">
+    <ClCompile Include="calculate.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Desktop\C++\arithmetic\control.cpp">
+    <ClCompile Include="control.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Desktop\C++\arithmetic\generate.cpp">
+    <ClCompile Include="generate.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Desktop\C++\arithmetic\main.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Desktop\C++\arithmetic\printf.cpp">
+    <ClCompile Include="printf.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\..\..\..\..\Desktop\C++\arithmetic\languagerc\Deutsch.txt">
-      <Filter>资源文件</Filter>
-    </Text>
-    <Text Include="..\..\..\..\..\Desktop\C++\arithmetic\languagerc\English.txt">
-      <Filter>资源文件</Filter>
-    </Text>
-    <Text Include="..\..\..\..\..\Desktop\C++\arithmetic\languagerc\francais.txt">
-      <Filter>资源文件</Filter>
-    </Text>
-    <Text Include="..\..\..\..\..\Desktop\C++\arithmetic\languagerc\LanguageList.txt">
-      <Filter>资源文件</Filter>
-    </Text>
-    <Text Include="..\..\..\..\..\Desktop\C++\arithmetic\languagerc\中文.txt">
-      <Filter>资源文件</Filter>
-    </Text>
   </ItemGroup>
 </Project>
