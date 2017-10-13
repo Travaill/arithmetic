@@ -9,82 +9,68 @@ stack<double> num_stk;
 stack<char> ope_stk;
 void Calculate::calculatePolynomial()      //计算多项式结果 
 {
-	char ope=ope_stk.top();
-    double a,b,res;
-    b=num_stk.top();
-    num_stk.pop();
-    a=num_stk.top();
-    num_stk.pop();
-    switch(ope)
-    {
-        case '+':res=a+b; break;
-        case '-':res=a-b; break;
-        case '*':res=a*b; break;
-        case '/':res=a/b; break;
-        default: break;
-    }
-    num_stk.push(res);
-    ope_stk.pop();
+	 int x=num.top();
+	num.pop();  
+    int y=num.top();
+	num.pop(); 
+    int res=0;  
+    char op=ope.top();
+    ope.pop();
+    if(op=='+')    
+    {    
+        res=x+y;  
+    }    
+    else if(op=='-')    
+    {    
+        res=y-x;   
+    }    
+    else if(op=='/')    
+    {    
+        res=y/x;  
+    }   
+    else if(op=='*')    
+    {    
+        res=y*x;  
+    }    
+    num.push(res);  
 }
 
 int Calculate::Rank(char x)                //计算优先级 
 {
-	switch (x)
-	{
-	    case '*':  
-        case '/': return 3;  
-        case '-':  
-        case '+': return 2;  
-        case '(': return 1;  
-        case ')': return -2;  
-        default :return -1;  
-	}
+	if(x=='('||x==')') return 0;    
+    else if(x=='+'||x=='-') return 1;    
+    else if(x=='*'||x=='/') return 2;  
 }
-
-double Calculate::calculateResult(string str)     //计算算式 
+int Calculate::change(char *s,int &i){  
+    int n = s[i]-'0';  
+    i++;  
+    while(s[i] >= '0'&& s[i] <= '9'){  
+        n = n*10 + s[i] - '0';  
+        i++;  
+    }  
+    return n;  
+}   
+double Calculate::calculateResult(char* exp)     //计算算式 
 {
-	
-	int x=0;
-	int  num_flag=0;
-	for(int i=0;i<str.size();i++)
-	{
-        if((str[i]>='0')&&(str[i]<='9'))
-		{
-            x=x*10+str[i]-'0';
-            num_flag=1;
-            if(i==str.size()-1)
-            num_stk.push(x);
-        }
-        else{
-            if(x)
-			{
-                num_stk.push(x);
-                x=0;
-                num_flag=0;
-            }
-            if(ope_stk.empty())
-                ope_stk.push(str[i]);
-            else if(str[i]=='(')
-                ope_stk.push(str[i]);
-            else if(str[i]==')')
-            {
-                while(ope_stk.top()!='(')
-                    calculatePolynomial();                
-                    ope_stk.pop();
-            }
-            else if((Rank(str[i]))<=Rank(ope_stk.top()))
-            {
-                calculatePolynomial();
-                ope_stk.push(str[i]);
-            }
-            else
-			{
-                ope_stk.push(str[i]);
-            }
-        }
-    }
-    while(!ope_stk.empty())
-    calculatePolynomial();
-    double res=num_stk.top();
-    return res;
+	ope.push('\0');
+	int i;
+	int flag = 1;  
+	 while(flag){  
+        if(exp[i] >= '0'&& exp[i] <= '9'){  
+            num.push(change(exp,i));  
+        }  
+        else if(exp[i] == '\0' && ope.top() == '\0') flag = 0;  
+        else if(exp[i] == '(' || rank(exp[i]) > rank(ope.top() )){    ////运算符优先级高于栈顶运算符 入栈   
+            ope.push(exp[i]);  
+            i++;  
+        }  
+        else if(exp[i] == ')' && ope.top() == '('){  /// 把括号消除   
+            ope.pop() ;  
+            i++;  
+        }  
+        else if(rank(exp[i]) <= rank(ope.top())){  ///运算符优先级低于栈顶运算符 运算   
+           cal();
+        }  
+    }  
+	cout<<num.top();
 }

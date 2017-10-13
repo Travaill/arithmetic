@@ -5,8 +5,9 @@ using namespace std;
 class Calculate
 {
 public:
-	double calculateResult(string str);   
+	double calculateResult(char *str);   
 private:
+	int change(char *s,int &i);
     void calculatePolynomial(); 
     int Rank(char x) ;          
 };
